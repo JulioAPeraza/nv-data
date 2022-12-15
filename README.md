@@ -1,2 +1,38 @@
-# nv-data
-Data dump from NeuroVault
+# NeuroVault Public Data Archive
+
+This repository contains archived data from NeuroVault.org.
+
+The data has been dumped from a subset production database concerned with the "statsmaps" application, and censoring has been performed to remove user related information.
+
+## Tables
+
+Within the statsmaps subset, the following tables are included:
+
+### Collections
+* `statmaps_collection`
+This is the main table that indexes NeuroVault Collections. Critically the `id` column is the primary key for the table, and is used to link to other tables (refered to in other tables as `collection_id`)
+* `statmaps_collection_contributors`
+Association of collections with `user_id`
+
+
+### Collection Items / Images
+* `statmaps_basecollectionitem`
+This is the main table that indexes NeuroVault Collection Items. Critically the `id` column is the primary key for the table, and is used to link to other tables as `basecollectionitem_ptr_id`
+* `statmaps_images`
+Images are a type of Collection Item. This table contains the image specific information. The `id` column in this table is refered to in other tables as `image_ptr_id`
+* `statmaps_statisticmap`
+StatisticMaps are a type of Images, with additional meta-data, such as `smoothness_fwhm`, `cognitive_paradigm_cogatlas_id`
+* `statmaps_atlas`
+Atalses are a type of Images, with an additional reference to `label_description_file`
+
+### Cogntive Atlas
+* `statmaps_cognitiveatlastask`
+Mapping of `cog_atlas_id` (referenced in `statmaps_statisticmap`) to task names
+* `statmaps_cognitiveatlascontrast`
+Mapping of `cog_atlas_id` referenced in `statmaps_statisticmap`) to contrast names
+
+### Other tables
+* `statmaps_collection_communities`
+Grouping of collections into "communities". 
+* `statmaps_communities`
+Listing of communities. This is specific to two communities, "Developmental Neuroscience" and "Nutritional Neuroscience"
