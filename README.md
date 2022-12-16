@@ -18,12 +18,13 @@ Association of collections with `user_id`
 ### Collection Items / Images
 * `statmaps_basecollectionitem`
 This is the main table that indexes NeuroVault Collection Items. Critically the `id` column is the primary key for the table, and is used to link to other tables as `basecollectionitem_ptr_id`
-* `statmaps_images`
-Images are a type of Collection Item. This table contains the image specific information. The `id` column in this table is refered to in other tables as `image_ptr_id`
+* `statmaps_image`
+Images are a type of Collection Item. This table contains the image specific information. The column `basecollectionitem_ptr_id` in this table corresponds to `statmaps_basecollectionitem.id`
 * `statmaps_statisticmap`
-StatisticMaps are a type of Images, with additional meta-data, such as `smoothness_fwhm`, `cognitive_paradigm_cogatlas_id`
+StatisticMaps are a type of Images, with additional meta-data, such as `smoothness_fwhm`, `cognitive_paradigm_cogatlas_id`.
+The column `image_ptr_id'` in this table corresponds to `statmaps_basecollectionitem.id` & `statmaps_image.basecollectionitem_ptr_id`
 * `statmaps_atlas`
-Atalses are a type of Images, with an additional reference to `label_description_file`
+Atlases are a type of Images, with an additional reference to `label_description_file`. the column `image_ptr_id` refers to `statmaps_basecollectionitem.id` & `statmaps_image.basecollectionitem_ptr_id`.
 
 ### Cogntive Atlas
 * `statmaps_cognitiveatlastask`
