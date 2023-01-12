@@ -37,3 +37,17 @@ Mapping of `cog_atlas_id` referenced in `statmaps_statisticmap`) to contrast nam
 Grouping of collections into "communities". 
 * `statmaps_communities`
 Listing of communities. This is specific to two communities, "Developmental Neuroscience" and "Nutritional Neuroscience"
+
+## Importing into a SQLite database
+
+In order to quickly explore the contents of these CSV files, it may be convenient to import them into an SQLite database.
+The 'create_db.sh' script creates such a database (with the primary and foreign key constraints mentioned above) and fills it.
+It can be used like this:
+
+```
+tar xzf november_2022.tar.gz
+cd november_2022
+../create_db.sh
+
+sqlite3 neurovault.sqlite3
+```
